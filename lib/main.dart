@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'src/sliver_app_bar.dart';
+import 'src/sliver_nested.dart';
 
 void main() => runApp(AnimationSamples());
 
@@ -17,6 +18,10 @@ final basicDemos = [
       name: 'Sliver Bar',
       route: 'src/sliver_app_bar',
       builder: (context) => SliverBarExample()),
+  Demo(
+      name: 'Temp',
+      route: 'src/sliver_nested.dart',
+      builder: (context) => MyApp()),
 ];
 
 final basicDemoRoutes =

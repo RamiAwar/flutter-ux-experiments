@@ -1,4 +1,4 @@
-package com.example.hello_slivers
+package com.example.flutter_ux_animations
 
 import io.flutter.embedding.android.FlutterActivity
 
