@@ -41,7 +41,6 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 class SliverHorizontalListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return SliverPersistentHeader(
       pinned: false,
       delegate: _SliverAppBarDelegate(
@@ -61,7 +60,8 @@ class SliverHorizontalListView extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 32),
                   width: 200,
                   child: Center(
-                    child: Expanded(child: Center(child: Placeholder())),
+                    child: Expanded(
+                        child: Center(child: Container(child: Placeholder()))),
                   ),
                 ),
               ),

@@ -35,10 +35,8 @@ class AnimationSamples extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Animation Samples',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-      ),
       routes: allRoutes,
       home: HomePage(),
     );
@@ -49,7 +47,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: GridView.count(
           padding: EdgeInsets.all(16.0),
@@ -68,18 +66,19 @@ class DemoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        padding: EdgeInsets.all(8.0),
-        child: Center(
-          child: ListTile(
-            title: Center(
-              child: Text(demo.name),
-            ),
-            onTap: () {
-              Navigator.pushNamed(context, demo.route);
-            },
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.circular(16)),
+      padding: EdgeInsets.all(8.0),
+      child: Center(
+        child: ListTile(
+          title: Center(
+            child: Text(demo.name),
           ),
+          onTap: () {
+            Navigator.pushNamed(context, demo.route);
+          },
         ),
       ),
     );

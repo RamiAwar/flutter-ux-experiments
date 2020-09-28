@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'no_splash.dart';
 import 'sliver_horizontal_list.dart';
 import 'sliver_obstruction_injector.dart';
+
+import 'package:flutter_placeholder_textlines/flutter_placeholder_textlines.dart';
 
 class SliverCategories extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -38,7 +42,16 @@ class SliverCategories extends StatelessWidget {
                 SliverHorizontalListView(),
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
-                      (context, index) => ListTile(title: Text("Item #$index")),
+                      (context, index) => ListTile(
+                            title: PlaceholderLines(
+                              count: 2,
+                              maxWidth: 0.8,
+                              minWidth: 0.4,
+                              align: TextAlign.left,
+                              lineHeight: 8,
+                              color: Colors.grey,
+                            ),
+                          ),
                       childCount: 20),
                 ),
               ],
