@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'src/sliver_hero_example.dart';
 
 import 'src/sliver_categories.dart';
-import 'src/sliver_nested.dart';
+import 'src/temp.dart';
 
 void main() => runApp(AnimationSamples());
 
@@ -18,10 +19,11 @@ final basicDemos = [
       name: 'Sliver Categories',
       route: 'src/sliver_categories',
       builder: (context) => SliverCategories()),
-  // Demo(
-  //     name: 'Temp',
-  //     route: 'src/sliver_nested.dart',
-  //     builder: (context) => MyApp()),
+  Demo(
+      name: 'Sliver Hero App Bar',
+      route: 'src/sliver_hero_example',
+      builder: (context) => SliverHeroExample()),
+  Demo(name: 'Temp', route: 'src/temp.dart', builder: (context) => MyApp()),
 ];
 
 final basicDemoRoutes =
@@ -48,12 +50,19 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: GridView.count(
-          padding: EdgeInsets.all(16.0),
-          crossAxisCount: 2,
-          children: basicDemos.map((d) => DemoTile(d)).toList(),
-        ),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(),
+          SliverPadding(
+            padding: EdgeInsets.all(16),
+            sliver: SliverGrid.count(
+              crossAxisCount: 2,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              children: basicDemos.map((d) => DemoTile(d)).toList(),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -67,14 +76,15 @@ class DemoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(16)),
-      padding: EdgeInsets.all(8.0),
+      color: Colors.black12,
       child: Center(
         child: ListTile(
           title: Center(
-            child: Text(demo.name),
+            child: Text(
+              demo.name,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black87),
+            ),
           ),
           onTap: () {
             Navigator.pushNamed(context, demo.route);

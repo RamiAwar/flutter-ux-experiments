@@ -9,6 +9,8 @@ import 'sliver_obstruction_injector.dart';
 import 'package:flutter_placeholder_textlines/flutter_placeholder_textlines.dart';
 
 class SliverCategories extends StatelessWidget {
+  final double avatarRadius = 35;
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: NestedScrollView(
@@ -17,15 +19,24 @@ class SliverCategories extends StatelessWidget {
             SliverOverlapAbsorber(
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
               sliver: SliverAppBar(
+                flexibleSpace: Stack(
+                  overflow: Overflow.visible,
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Positioned(
+                      bottom: -avatarRadius,
+                      child: CircleAvatar(
+                          radius: avatarRadius,
+                          backgroundColor: Color(0xffcfcfcf)),
+                    ),
+                  ],
+                ),
+                title: PlaceholderLines(
+                  count: 1,
+                ),
                 collapsedHeight: 80,
                 pinned: true,
-                leading: IconButton(
-                  color: Colors.black,
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () => Navigator.pop(context),
-                ),
-                backgroundColor: Colors.white,
-                flexibleSpace: Placeholder(),
+                backgroundColor: Colors.blue,
                 elevation: 0,
                 expandedHeight: 400,
               ),
@@ -43,13 +54,16 @@ class SliverCategories extends StatelessWidget {
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                       (context, index) => ListTile(
-                            title: PlaceholderLines(
-                              count: 2,
-                              maxWidth: 0.8,
-                              minWidth: 0.4,
-                              align: TextAlign.left,
-                              lineHeight: 8,
-                              color: Colors.grey,
+                            title: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: PlaceholderLines(
+                                count: 2,
+                                maxWidth: 0.8,
+                                minWidth: 0.4,
+                                align: TextAlign.left,
+                                lineHeight: 8,
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
                       childCount: 20),

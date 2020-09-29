@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_placeholder_textlines/placeholder_lines.dart';
 
 import 'no_splash.dart';
 
@@ -41,27 +42,38 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 class SliverHorizontalListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size deviceSize = MediaQuery.of(context).size;
+
     return SliverPersistentHeader(
       pinned: false,
       delegate: _SliverAppBarDelegate(
-        minHeight: 150,
-        maxHeight: 260,
+        minHeight: 200,
+        maxHeight: 300,
         child: Container(
           color: Colors.white10,
           child: NoSplash(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 64),
               itemCount: 10,
               itemBuilder: (context, index) => Container(
-                margin: index == 9
-                    ? EdgeInsets.symmetric(horizontal: 32)
-                    : EdgeInsets.only(left: 32.0),
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 32),
-                  width: 200,
-                  child: Center(
-                    child: Expanded(
-                        child: Center(child: Container(child: Placeholder()))),
+                decoration: BoxDecoration(
+                  color: Colors.black12,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                // color: Colors.black12,
+                margin: EdgeInsets.only(right: index == 9 ? 0 : 32),
+                width: (deviceSize.width - 96) /
+                    2, // position only 2 cards on screen at a time
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: PlaceholderLines(
+                        align: TextAlign.center,
+                        minOpacity: 0.2,
+                        maxOpacity: 0.5,
+                        count: 2,
+                        color: Colors.black26),
                   ),
                 ),
               ),
