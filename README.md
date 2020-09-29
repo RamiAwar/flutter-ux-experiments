@@ -2,6 +2,6 @@
 
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="500" align="center" src="../assets/recordings/sliver_horizontal_list.gif?raw=true"> <br> Horizontal Sliver |||
+|<img width="350" align="center" src="../assets/recordings/sliver_horizontal_list.gif?raw=true"> <br> Horizontal Sliver |||
 ||||
 ||||
