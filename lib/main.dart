@@ -16,11 +16,11 @@ class Demo {
 
 final basicDemos = [
   Demo(
-      name: 'Sliver Categories',
+      name: 'Sliver Category',
       route: 'src/sliver_categories',
       builder: (context) => SliverCategories()),
   Demo(
-      name: 'Sliver Hero App Bar',
+      name: 'Sliver Hero',
       route: 'src/sliver_hero_example',
       builder: (context) => SliverHeroExample()),
   Demo(name: 'Temp', route: 'src/temp.dart', builder: (context) => MyApp()),
