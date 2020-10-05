@@ -3,27 +3,22 @@ import 'src/sliver_hero_example.dart';
 
 import 'src/sliver_categories.dart';
 import 'src/temp.dart';
+import 'src/experiment_tile.dart';
 
 void main() => runApp(AnimationSamples());
 
-class Demo {
-  final String name;
-  final String route;
-  final WidgetBuilder builder;
-
-  const Demo({this.name, this.route, this.builder});
-}
-
 final basicDemos = [
-  Demo(
+  Experiment(
       name: 'Sliver Category',
       route: 'src/sliver_categories',
       builder: (context) => SliverCategories()),
-  Demo(
+  Experiment(
       name: 'Sliver Hero',
       route: 'src/sliver_hero_example',
       builder: (context) => SliverHeroExample()),
-  Demo(name: 'Temp', route: 'src/temp.dart', builder: (context) => MyApp()),
+  // Demo(name: '')
+  // Demo(
+  //     name: 'Temp', route: 'src/temp.dart', builder: (context) => SendScreen()),
 ];
 
 final basicDemoRoutes =
@@ -59,37 +54,10 @@ class HomePage extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
-              children: basicDemos.map((d) => DemoTile(d)).toList(),
+              children: basicDemos.map((d) => ExperimentTile(d)).toList(),
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class DemoTile extends StatelessWidget {
-  final Demo demo;
-
-  DemoTile(this.demo);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black12,
-      child: Center(
-        child: ListTile(
-          title: Center(
-            child: Text(
-              demo.name,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black87),
-            ),
-          ),
-          onTap: () {
-            Navigator.pushNamed(context, demo.route);
-          },
-        ),
       ),
     );
   }
